@@ -1,16 +1,16 @@
 <launch>
     <arg name="hz" default="1.0"/>
-    <arg name="source_frame" default="odom"/>
-    <arg name="target_frame" default="base_link"/>
-    <arg name="pub_pose" default="false"/>
+    <arg name="reference_frame" default="odom"/>
+    <arg name="child_frame" default="base_link"/>
+    <arg name="pub_pose" default="true"/>
     <arg name="pose_topic" default="pose"/>
     <arg name="pub_transform" default="true"/>
     <arg name="transform_topic" default="transform"/>
 
     <node pkg="tf_relay" name="tf_relay_listener" type="listener">
         <param name="hz"  value="$(arg hz)"/>
-        <param name="source_frame"  value="$(arg source_frame)"/>
-        <param name="target_frame"  value="$(arg target_frame)"/>
+        <param name="reference_frame"  value="$(arg reference_frame)"/>
+        <param name="child_frame"  value="$(arg child_frame)"/>
         <param name="pub_pose"  value="$(arg pub_pose)"/>
         <param name="pose_topic"  value="$(arg pose_topic)"/>
         <param name="pub_transform"  value="$(arg pub_transform)"/>
