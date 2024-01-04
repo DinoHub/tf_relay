@@ -37,11 +37,9 @@ int main(int argc, char* argv[])
 
     while (ros::ok())
     {
-        ros::Time stamp = ros::Time::now();
-
         try
         {
-            transform_msg = tf_buf.lookupTransform(reference_frame, child_frame, stamp);
+            transform_msg = tf_buf.lookupTransform(reference_frame, child_frame, ros::Time(0));
             if (pub_pose)
             {
                 pose_msg.header = transform_msg.header;
@@ -58,7 +56,7 @@ int main(int argc, char* argv[])
                 transform_pub.publish(transform_msg);
             }
         }
-        catch(tf2::LookupException e)
+        catch(tf2::TransformException e)
         {
             ROS_WARN(e.what());
         }
