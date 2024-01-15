@@ -134,7 +134,7 @@ ${catkin_INCLUDE_DIRS}
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(listener src/listener.cpp)
-# add_executable(publisher src/publisher.cpp)
+add_executable(publisher src/publisher.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -148,6 +148,10 @@ add_executable(listener src/listener.cpp)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(listener
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(publisher
   ${catkin_LIBRARIES}
 )
 
@@ -172,6 +176,10 @@ target_link_libraries(listener
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
 install(TARGETS listener
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+install(TARGETS publisher
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
