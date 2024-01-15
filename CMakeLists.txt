@@ -135,6 +135,7 @@ ${catkin_INCLUDE_DIRS}
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(listener src/listener.cpp)
 add_executable(publisher src/publisher.cpp)
+add_executable(multi_listener src/multi_listener.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -152,6 +153,10 @@ target_link_libraries(listener
 )
 
 target_link_libraries(publisher
+  ${catkin_LIBRARIES}
+)
+
+target_link_libraries(multi_listener
   ${catkin_LIBRARIES}
 )
 
@@ -180,6 +185,10 @@ install(TARGETS listener
 )
 
 install(TARGETS publisher
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+install(TARGETS multi_listener
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
